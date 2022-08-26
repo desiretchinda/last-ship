@@ -1,0 +1,105 @@
+[gd_scene load_steps=33 format=1]
+
+[ext_resource path="res://assets/prefabs/scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/Red/Enemy_animation/1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Red/Enemy_animation/2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Red/Enemy_animation/3.png" type="Texture" id=4]
+[ext_resource path="res://assets/Red/Enemy_animation/4.png" type="Texture" id=5]
+[ext_resource path="res://assets/Red/Enemy_animation/5.png" type="Texture" id=6]
+[ext_resource path="res://assets/Red/Enemy_animation/6.png" type="Texture" id=7]
+[ext_resource path="res://assets/Red/Enemy_animation/7.png" type="Texture" id=8]
+[ext_resource path="res://assets/Red/Enemy_animation/8.png" type="Texture" id=9]
+[ext_resource path="res://assets/Effects/Red Explosion/1.png" type="Texture" id=10]
+[ext_resource path="res://assets/Effects/Red Explosion/2.png" type="Texture" id=11]
+[ext_resource path="res://assets/Effects/Red Explosion/3.png" type="Texture" id=12]
+[ext_resource path="res://assets/Effects/Red Explosion/4.png" type="Texture" id=13]
+[ext_resource path="res://assets/Effects/Red Explosion/5.png" type="Texture" id=14]
+[ext_resource path="res://assets/Effects/Red Explosion/6.png" type="Texture" id=15]
+[ext_resource path="res://assets/Effects/Red Explosion/7.png" type="Texture" id=16]
+[ext_resource path="res://assets/Effects/Red Explosion/8.png" type="Texture" id=17]
+[ext_resource path="res://assets/Effects/Red Explosion/9.png" type="Texture" id=18]
+[ext_resource path="res://assets/Effects/Red Explosion/910.png" type="Texture" id=19]
+[ext_resource path="res://assets/Effects/Red Explosion/911.png" type="Texture" id=20]
+[ext_resource path="res://assets/Effects/Red Explosion/912.png" type="Texture" id=21]
+[ext_resource path="res://assets/Effects/Red Explosion/913.png" type="Texture" id=22]
+[ext_resource path="res://assets/Effects/Red Explosion/914.png" type="Texture" id=23]
+[ext_resource path="res://assets/Effects/Red Explosion/915.png" type="Texture" id=24]
+[ext_resource path="res://assets/Effects/Red Explosion/916.png" type="Texture" id=25]
+[ext_resource path="res://assets/Effects/Red Explosion/917.png" type="Texture" id=26]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 7.53674, -40.6982, 21.1028, -99.4844, 91.9478, 10.5514, 45.2203, 21.1028 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -91.9476, 4.52203, -46.7275, -90.4404, 7.53674, -40.6982, -46.7275, 16.5807 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -46.7275, 16.5807, -34.6688, 91.9477, -49.7421, 94.9624, -91.9476, 4.52203 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -7.53662, 49.7422, -46.7275, 16.5807, 7.53674, -40.6982, 45.2203, 21.1028 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 45.2203, 21.1028, 91.9478, 10.5514, 48.2349, 97.9771, 33.1616, 91.9477 )
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ], "loop":true, "name":"fly", "speed":22.0 }, { "frames":[ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ], "loop":true, "name":"explose", "speed":22.0 } ]
+
+[node name="enemy" type="KinematicBody2D" groups=[ "enemies" ]]
+
+transform/scale = Vector2( 0.3, 0.3 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = true
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = true
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = true
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = true
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+speed = 90.0
+acc = 10
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+
+transform/scale = Vector2( 0.5, -0.5 )
+frames = SubResource( 6 )
+animation = "fly"
+playing = true
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -49.7421, 94.9624, -34.6688, 91.9477, -46.7275, 16.5807, -7.53662, 49.7422, 45.2203, 21.1028, 33.1616, 91.9477, 48.2349, 97.9771, 91.9478, 10.5514, 21.1028, -99.4844, 7.53674, -40.6982, -46.7275, -90.4404, -91.9476, 4.52203 )
+shape_range = Vector2( 0, 4 )
+trigger = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
+
+
